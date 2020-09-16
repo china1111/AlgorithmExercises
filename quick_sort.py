@@ -73,7 +73,7 @@ print(b)
 '''
 
 
-
+'''
 def quick_sort(arr, left, right):
     if left >= right:
         return
@@ -94,3 +94,36 @@ def quick_sort(arr, left, right):
 a = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 quick_sort(a, 0, len(a)-1)
 print(a)
+'''
+
+'''
+def quick_sort(arr):
+    return (arr if (len(arr) < 2 or arr == None) else (quick_sort([i for i in arr[1:] if i <= arr[0]]) + [arr[0]] + quick_sort([i for i in arr[1:] if i > arr[0]])))
+
+a = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+b = quick_sort(a)
+print(b)
+'''
+
+
+def quick_sort(arr, first, last):
+    if first >= last:
+        return
+    left = first
+    right = last
+    t = arr[left]
+    while left < right:
+        while left < right and arr[right] > t:
+            right -= 1
+        arr[left] = arr[right]
+        while left < right and arr[left] <=t:
+            left += 1
+        arr[right] = arr[left]
+    arr[left] = t
+    quick_sort(arr, first, left - 1)
+    quick_sort(arr, left + 1, last)
+
+a = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+quick_sort(a, 0, len(a) - 1)
+print(a)
+
